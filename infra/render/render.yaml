@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: samba-backend
+    runtime: docker
+    repo: <YOUR_GIT_REPO>
+    rootDir: apps/backend
+    dockerContext: apps/backend
+    dockerfilePath: apps/backend/Dockerfile
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: Firebase__ProjectId
+        sync: false
+      - key: ConnectionStrings__Default
+        fromDatabase:
+          name: samba-postgres
+          property: connectionString
+
+  - type: web
+    name: samba-web
+    runtime: docker
+    repo: <YOUR_GIT_REPO>
+    rootDir: apps/web
+    dockerContext: apps/web
+    dockerfilePath: apps/web/Dockerfile
+    envVars:
+      - key: NEXT_PUBLIC_API_BASE_URL
+        value: https://samba-backend.onrender.com
+      - key: NEXT_PUBLIC_FIREBASE_API_KEY
+        sync: false
+      - key: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+        sync: false
+      - key: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+        sync: false
+      - key: NEXT_PUBLIC_FIREBASE_APP_ID
+        sync: false
+
+databases:
+  - name: samba-postgres
+    databaseName: samba
+    user: samba
