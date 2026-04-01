@@ -1,3 +1,4 @@
+using Api.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,16 +10,18 @@ public class AuthController : ControllerBase
 {
     [HttpGet("me")]
     [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public IActionResult Me()
     {
-        var user = new
+        var response = new
         {
-            uid = User.FindFirst("user_id")?.Value ?? User.FindFirst("sub")?.Value,
-            email = User.FindFirst("email")?.Value,
-            name = User.FindFirst("name")?.Value,
+            uid = User.GetFirebaseUid(),
+            email = User.GetEmail(),
+            name = User.GetDisplayName(),
             issuer = User.FindFirst("iss")?.Value,
         };
 
-        return Ok(user);
+        return Ok(response);
     }
 }

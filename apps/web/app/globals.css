@@ -15,7 +15,8 @@
 
 body {
   margin: 0;
-  background: radial-gradient(circle at top right, #d2e3ff 0%, var(--bg) 35%), var(--bg);
+  background:
+    radial-gradient(circle at top right, #d2e3ff 0%, var(--bg) 35%), var(--bg);
   color: var(--text);
   font-family: "Segoe UI", "Helvetica Neue", sans-serif;
 }
@@ -122,6 +123,41 @@ td {
   border: 1px solid #f0aaaa;
   border-radius: 8px;
   padding: 8px 10px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.search-bar input {
+  flex: 1;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e1e7f0;
+}
+
+.pagination span {
+  font-size: 0.9rem;
+  color: #556;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 20px;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 @media (max-width: 720px) {

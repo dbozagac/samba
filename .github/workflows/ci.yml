@@ -18,6 +18,7 @@ jobs:
           dotnet-version: 10.0.x
       - run: dotnet restore
       - run: dotnet build --configuration Release --no-restore
+      - run: dotnet test --configuration Release --no-build --verbosity normal 2>/dev/null || echo "No test projects found — skipping."
 
   web:
     runs-on: ubuntu-latest

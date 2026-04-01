@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Flutter Run iOS (Samba)",
+      "type": "shell",
+      "command": "flutter",
+      "args": [
+        "run",
+        "--no-dds",
+        "-d",
+        "5DEB9102-28B3-4607-88B6-DD4775835BB4",
+        "--dart-define-from-file=.env.mobile"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/apps/mobile"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Flutter Run Android (Samba)",
+      "type": "shell",
+      "command": "flutter",
+      "args": ["run", "--dart-define-from-file=.env.mobile"],
+      "options": {
+        "cwd": "${workspaceFolder}/apps/mobile"
+      },
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

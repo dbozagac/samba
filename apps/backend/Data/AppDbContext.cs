@@ -14,6 +14,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         var user = modelBuilder.Entity<User>();
         user.ToTable("users");
         user.HasKey(x => x.Id);
+        user.Property(x => x.OwnerFirebaseUid).HasMaxLength(128).IsRequired();
         user.Property(x => x.Username).HasMaxLength(100).IsRequired();
         user.Property(x => x.TcNo).HasMaxLength(11).IsRequired();
         user.Property(x => x.Email).HasMaxLength(255).IsRequired();
@@ -21,6 +22,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         user.Property(x => x.CreatedAtUtc).IsRequired();
         user.Property(x => x.UpdatedAtUtc).IsRequired();
 
+        user.HasIndex(x => x.OwnerFirebaseUid);
         user.HasIndex(x => x.TcNo).IsUnique();
         user.HasIndex(x => x.Email).IsUnique();
     }

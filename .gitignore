@@ -370,3 +370,4 @@ android/.gradle/
 
 # Local env
 .env
+.env.mobile

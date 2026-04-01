@@ -1,14 +1,42 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Open index.html",
-            "file": "/Users/doruk.bozagac/Documents/GitSamba/samba/templates/index.html"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter iOS (Samba)",
+      "request": "launch",
+      "type": "dart",
+      "program": "apps/mobile/lib/main.dart",
+      "cwd": "apps/mobile",
+      "deviceId": "5DEB9102-28B3-4607-88B6-DD4775835BB4",
+      "toolArgs": ["--no-dds", "--dart-define-from-file=.env.mobile"]
+    },
+    {
+      "name": "Flutter Android (Samba)",
+      "request": "launch",
+      "type": "dart",
+      "program": "apps/mobile/lib/main.dart",
+      "cwd": "apps/mobile",
+      "toolArgs": ["--dart-define-from-file=.env.mobile"]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Open index.html",
+      "file": "/Users/doruk.bozagac/Documents/GitSamba/samba/templates/index.html"
+    },
+    {
+      "name": "Next.js Dev Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/apps/web/node_modules/.bin/next",
+      "args": ["dev"],
+      "cwd": "${workspaceFolder}/apps/web",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  ]
 }
